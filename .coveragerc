@@ -1,0 +1,16 @@
+[paths]
+source = emotient/*
+
+[run]
+branch = True
+
+[report]
+include = emotient/*
+ignore_errors = True
+
+[html]
+title = "Emotient Python SDK Code Coverage"
+directory = coverage/html
+
+[xml]
+output = ./coverage/api_coverage.xml

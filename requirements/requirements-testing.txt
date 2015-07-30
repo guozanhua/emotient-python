@@ -1,0 +1,5 @@
+flake8==2.4.0
+mock==1.0.1
+pytest==2.7.1
+pytest-cov==1.7.0
+responses==0.4.0

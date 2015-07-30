@@ -1,0 +1,12 @@
+*.pyc
+.DS_Store
+*.swp
+
+# Unit test / coverage reports
+.tox/
+.coverage
+coverage/
+.cache
+coverage.xml
+
+/*.egg-info/
