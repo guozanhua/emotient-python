@@ -54,7 +54,7 @@ Group objects have similar functionality as media. You can create, retrieve, upd
  
         media_list = client.media.list(page=1, per_page=500)
         for media in media_list:
-	    print(media.id)
+	    	print(media.id)
 
 
 
@@ -80,7 +80,7 @@ Group objects have similar functionality as media. You can create, retrieve, upd
 
 1. Upload a new video, create a group, and add the new media to the group: 
 
-        video_path = 'your/user/path/clip.mp4 
+        video_path = 'your/user/path/clip.mp4' 
         with open(video_path, 'rb') as fp:
         	new_media = client.media.upload(fp)
 
