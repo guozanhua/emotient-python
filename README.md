@@ -40,7 +40,7 @@ client = EmotientAnalyticsAPI(api_key)
 
 ## Examples
 
-Group objects have similar functionality as media. You can create, retrieve, update (Isn't this --> UPLOAD???), delete, and download aggregated analytics for groups.
+Group objects have similar functionality as media. You can create, retrieve, update, delete, and download aggregated analytics for groups.
 
 
 1. Retrieve all media:
@@ -69,7 +69,7 @@ Group objects have similar functionality as media. You can create, retrieve, upd
 
 
 
-1. Delete a media object (This is irreversible.): 
+1. Delete a media object (this is irreversible): 
               
         media_id = 'c2128139-a984-b695-52a4-eae8021103bb'
         media = client.media.retrieve(media_id)
@@ -117,17 +117,12 @@ Group objects have similar functionality as media. You can create, retrieve, upd
 	    	print(media.id)
 
 
-
-## Batch Tasks
-
-Upload and download analytics for multiple videos with these scripts: <https://github.com/emotient/Samples>
-
 ## Contributing
 1. [Fork it](https://github.com/emotient/emotient-python) and clone
-2. Create your script branch with `git checkout -b my-new-script`
-3. Commit your changes with `git commit -am 'Add some script'`
-4. Push to the branch with `git push origin my-new-script`
-5. Create a new Pull Request.
+2. Create your script branch with `git checkout -b my-edit`
+3. Commit your changes with `git commit -am 'Add some edit'`
+4. Push to the branch with `git push origin my-edit`
+5. Create a new Pull Request
 
 ## Support
 
