@@ -77,25 +77,25 @@ class InstanceDeleteMixin(object):
 
 class AnalyticsMixin(object):
 
-    def analytics(self, id, fp):
+    def analytics(self, id, fp, timeout=10):
         """
         Download the frame-level analytics CSV associated with this id and save it to fp.
         """
-        return self._client.request_to_file(fp, 'GET', self.model.analytics_url(id))
+        return self._client.request_to_file(fp, 'GET', self.model.analytics_url(id), timeout=timeout)
 
 
 class InstanceAnalyticsMixin(object):
 
-    def analytics(self, fp):
+    def analytics(self, fp, timeout=10):
         """
         Download the frame-level analytics CSV associated with this object and save it to fp.
         """
-        return self._client.request_to_file(fp, 'GET', self.model.analytics_url(self.id))
+        return self._client.request_to_file(fp, 'GET', self.model.analytics_url(self.id), timeout=timeout)
 
 
 class AggregatedAnalyticsMixin(object):
 
-    def aggregated_analytics(self, id, fp, interval='summary', report='standard', gender='both'):
+    def aggregated_analytics(self, id, fp, interval='summary', report='standard', gender='both', timeout=10):
         """
         Download the aggregated analytics CSV associated with this id and save it to fp.
             - interval	The time unit of aggregation: second, quarter, summary.
@@ -103,12 +103,12 @@ class AggregatedAnalyticsMixin(object):
             - gender	Separate or combined gender rows: both, combined.
         """
         return self._client.download_aggregated_file(fp, self.model.aggregated_analytics_url(id), interval=interval,
-                                                     report=report, gender=gender)
+                                                     report=report, gender=gender, timeout=timeout)
 
 
 class InstanceAggregatedAnalyticsMixin(object):
 
-    def aggregated_analytics(self, fp, interval='summary', report='standard', gender='both'):
+    def aggregated_analytics(self, fp, interval='summary', report='standard', gender='both', timeout=10):
         """
         Download the aggregated analytics CSV associated with this instance and save it to fp.
             - interval	The time unit of aggregation: second, quarter, summary.
@@ -116,24 +116,24 @@ class InstanceAggregatedAnalyticsMixin(object):
             - gender	Separate or combined gender rows: both, combined.
         """
         return self._client.download_aggregated_file(fp, self.model.aggregated_analytics_url(self.id),
-                                                     interval=interval, report=report, gender=gender)
+                                                     interval=interval, report=report, gender=gender, timeout=timeout)
 
 
 class MetadataCSVMixin(object):
 
-    def metadata(self, id, fp):
+    def metadata(self, id, fp, timeout=10):
         """
         Download the metadata CSV for this group id
         """
         url = 'analytics/groups/{}/metadata'.format(id)
-        return self._client.request_to_file(fp, 'GET', url)
+        return self._client.request_to_file(fp, 'GET', url, timeout=timeout)
 
 
 class InstanceMetadataCSVMixin(object):
 
-    def metadata(self, fp):
+    def metadata(self, fp, timeout=10):
         """
         Download the metadata CSV for this group
         """
         url = 'analytics/groups/{}/metadata'.format(self.id)
-        return self._client.request_to_file(fp, 'GET', url)
+        return self._client.request_to_file(fp, 'GET', url, timeout=timeout)

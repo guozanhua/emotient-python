@@ -35,7 +35,7 @@ class MediaManager(EmotientManager, ListMixin, RetrieveMixin, UpdateMixin, Delet
         new_media_id = resp['id']
         return self.retrieve(new_media_id)
 
-    def search(self, query, sort=None, order='asc', page=1, per_page=50):
+    def search(self, query, sort=None, order='asc', page=1, per_page=50, timeout=10):
         params = {
             'q': query,
             'order': order,
@@ -46,7 +46,7 @@ class MediaManager(EmotientManager, ListMixin, RetrieveMixin, UpdateMixin, Delet
         if sort is not None:
             params['sort'] = sort
 
-        resp = self._client.request('GET', 'search', params=params)
+        resp = self._client.request('GET', 'search', params=params, timeout=timeout)
         item_list = resp['items']
         return self.to_instance(item_list)
 
