@@ -68,11 +68,11 @@ class APIWrapper(object):
 
         return content
 
-    def request_to_file(self, fp, method, url, headers=None, params=None):
+    def request_to_file(self, fp, method, url, headers=None, params=None, timeout=10):
         api_url = u'{}/{}'.format(self.base_url, url)
         headers = self.get_headers(headers)
 
-        resp_iterator = self.http_client.streaming_request(method, api_url, headers, params=params)
+        resp_iterator = self.http_client.streaming_request(method, api_url, headers, params=params, timeout=timeout)
 
         for block in resp_iterator(1024):
             if not block:
@@ -84,17 +84,17 @@ class APIWrapper(object):
             fp.write(block)
         return fp
 
-    def request_page(self, list_url, page, per_page):
+    def request_page(self, list_url, page, per_page, timeout=10):
         params = {
             'page': page,
             'per_page': per_page
         }
-        return self.request_json('GET', list_url, params=params)
+        return self.request_json('GET', list_url, params=params, timeout=timeout)
 
-    def download_aggregated_file(self, fp, url, interval='summary', report='standard', gender='both'):
+    def download_aggregated_file(self, fp, url, interval='summary', report='standard', gender='both', timeout=10):
         params = {
             'interval': interval,
             'report': report,
             'gender': gender
         }
-        return self.request_to_file(fp, 'GET', url, params=params)
+        return self.request_to_file(fp, 'GET', url, params=params, timeout=timeout)
